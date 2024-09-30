@@ -130,6 +130,10 @@ app.post("/api/scoreboard", async (req, res) => {
   }
 });
 
+app.get("/api/clear",(req,res)=>{
+    leaderboard=[];
+})
+
 app.get("/", (req, res) => {
   res.send("Hello World!");
 });
