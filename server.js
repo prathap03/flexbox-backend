@@ -106,6 +106,12 @@ console.log("socket.io: User connected: ", socket.id);
   // Send initial leaderboard
   socket.emit('leaderboard_update', leaderboard);
 
+  app.get("/api/clear",(req,res)=>{
+    leaderboard=[];
+    socket.emit('leaderboard_update', leaderboard);
+    res.send("Scoreboard cleared");
+})
+
   socket.on('request_initial_leaderboard', () => {
     socket.emit('leaderboard_update', leaderboard);
   });
@@ -130,9 +136,7 @@ app.post("/api/scoreboard", async (req, res) => {
   }
 });
 
-app.get("/api/clear",(req,res)=>{
-    leaderboard=[];
-})
+
 
 app.get("/", (req, res) => {
   res.send("Hello World!");
